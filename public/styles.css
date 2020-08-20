@@ -1,0 +1,52 @@
+/* HTML Elements */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(83, 81, 81);
+    background-image: url("https://www.transparenttextures.com/patterns/black-thread.png");
+    /* padding: 0 16px; */
+}
+
+
+
+/* Id Elements */
+
+/* Class Elements */
+
+.heading {
+    background-color: rgb(18, 94, 145);
+    color: white;
+    height: 80px;
+    padding: 20px 0px 0px 40px;
+}
+
+.activity-block {
+    margin-left: 100px;
+    border: solid;
+    border-width: 2px;
+    border-color: white;
+    margin-top: 100px;
+    padding-left: 15px;
+    padding-top: 15px;
+    background-color: rgb(16, 25, 51);
+    opacity: 60%;
+    color: white;
+    height: 130px;
+    width: 400px;
+}
+
+.activity-block button {
+    background-color: rgb(15, 77, 73);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    color: white;
+    font-size: 15px;
+    border: none;
+    outline: none;
+    margin: 10px 10px 0 10px;
+}
