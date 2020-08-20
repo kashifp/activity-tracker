@@ -1,74 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 
 function Activity(props) {
 
-    const [hours, changeHours] = useState(0);
+    const [hours, changeHour] = useState(0);
     const [minutes, changeMin] = useState(0);
     const [seconds, changeSec] = useState(0);
-    const [run, changeRun] = useState(false);
+    const [running, changeRun] = useState(false);
+    
 
-
-
-
-    function startTime() {
-
-
+    useEffect(() => {
         let watch = null;
-
-        if (run == false) {
-
-
-
-            let hr = hours;
-            let min = minutes;
-            let sec = seconds;
-
+        if (running) {
             watch = setInterval(() => {
-                if (run == false) {
-                    if (sec != 59) {
-                        changeSec((seconds) => (seconds + 1));
-                        sec += 1;
+                if (seconds != 59) {
+                    changeSec((seconds) => (seconds + 1));
+                } else {
+                    if (minutes != 59) {
+                        changeMin((minutes) => (minutes + 1));
                     } else {
-                        if (min != 59) {
-                            changeMin((minutes) => (minutes + 1));
-                            min += 1
-                        } else {
-
-                            changeHours((hours) => (hours + 1));
-                            changeMin((minutes) => 0);
-                            hr += 1;
-                            min = 0;
-                        }
-                        changeSec((seconds) => 0);
-                        sec = 0;
+                        changeHour((hours) => (hours + 1));
+                        changeMin((minutes) => 0);
                     }
-                }
-                if (run == true) {
-                    clearInterval(watch);
-                    changeRun(false);
+                    changeSec((seconds) => 0);
                 }
             }, 100);
+        } else {
+            clearInterval(watch);
         }
+
+        return () => clearInterval(watch);
+    }, [running, hours, minutes, seconds]);
+
+
+    function toggleTime() {
+        changeRun(!running);
     }
 
+    // function startTime () {
+    //     changeRun(false);
+    // }
 
-    function stopTime() {
-        changeRun(true);
-    }
+    // function stopTime() {
+    //     changeRun(true);
+    // }
 
-    function aler() {
-        alert("how are you");
-        changeRun(!run);
+    function reset() {
+        changeRun(false);
+        changeSec(0);
+        changeMin(0);
+        changeHour(0);
     }
 
     return (<div className="activity-block">
         <h2>{props.activity} Time: {hours <= 9 ? 0 : null}{hours}:{minutes <= 9 ? 0 : null}{minutes}:{seconds <= 9 ? 0 : null}{seconds}</h2>
-        <button onClick={startTime}><PlayArrowIcon /></button>
-        <button onClick={stopTime}><PauseIcon /></button>
-        <button onClick={aler}>Reset</button>
+        <button onClick={toggleTime}><PlayArrowIcon /></button>
+        <button onClick={toggleTime}><PauseIcon /></button>
+        <button onClick={reset}>Reset</button>
     </div>);
 }
 
