@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReactDom from 'react-dom';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
+import ReplayIcon from '@material-ui/icons/Replay';
 
 function Activity(props) {
 
@@ -26,7 +27,7 @@ function Activity(props) {
                     }
                     changeSec((seconds) => 0);
                 }
-            }, 100);
+            }, 1000);
         } else {
             clearInterval(watch);
         }
@@ -39,14 +40,6 @@ function Activity(props) {
         changeRun(!running);
     }
 
-    // function startTime () {
-    //     changeRun(false);
-    // }
-
-    // function stopTime() {
-    //     changeRun(true);
-    // }
-
     function reset() {
         changeRun(false);
         changeSec(0);
@@ -58,7 +51,7 @@ function Activity(props) {
         <h2>{props.activity} Time: {hours <= 9 ? 0 : null}{hours}:{minutes <= 9 ? 0 : null}{minutes}:{seconds <= 9 ? 0 : null}{seconds}</h2>
         <button onClick={toggleTime}><PlayArrowIcon /></button>
         <button onClick={toggleTime}><PauseIcon /></button>
-        <button onClick={reset}>Reset</button>
+        <button onClick={reset}><ReplayIcon /></button>
     </div>);
 }
 

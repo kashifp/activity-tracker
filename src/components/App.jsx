@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import Header from "./Header"
 import Activity from './Activity';
+import ActivitySpace from "./ActivitySpace"
 
 function App() {
-    return <div><Header /><Activity activity="Sitting"/></div>;
+
+    const [list, changeList] = useState([]);
+
+    // Adds activities taken from ActivitySpace form to list
+    function addActivity(newActivity) {
+        changeList(prev => {
+            return [...prev, newActivity];
+        });
+    }
+
+
+    return <div><Header /><ActivitySpace addAct={addActivity} />
+        {list.map((theActivity, index) => {
+            return (<Activity activity={theActivity} key={index} />);
+        })}
+    </div>;
 }
 
 export default App;
