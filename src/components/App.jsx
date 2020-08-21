@@ -17,9 +17,9 @@ function App() {
 
 
     return <div><Header /><ActivitySpace addAct={addActivity} />
-        {list.map((theActivity, index) => {
+        <div>{list.map((theActivity, index) => {
             return (<Activity activity={theActivity} key={index} />);
-        })}
+        })}</div>
     </div>;
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 import Activity from './Activity'
+import AddIcon from '@material-ui/icons/Add';
 
 function ActivitySpace(props) {
 
@@ -21,7 +22,7 @@ function ActivitySpace(props) {
     }
 
     return (<div>
-        <form>
+        <form className="entry-field">
             <input
                 onChange={updateField}
                 name="newActivity"
@@ -30,7 +31,7 @@ function ActivitySpace(props) {
                 value={act} />
 
 
-            <button onClick={sendAct}>+</button>
+            <button onClick={sendAct}><AddIcon /></button>
         </form>
     </div>);
 }
