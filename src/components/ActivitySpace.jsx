@@ -28,6 +28,7 @@ function ActivitySpace(props) {
                 name="newActivity"
                 placeHolder="Activity..."
                 autoComplete="off"
+                maxLength="30"
                 value={act} />
 
 
