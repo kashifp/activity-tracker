@@ -15,10 +15,18 @@ function App() {
         });
     }
 
+    function deleteActivity(token) {
+        changeList(prev => {
+            return prev.filter((activity, index) => {
+                return index !== token;
+            });
+        });
+    }
+
 
     return <div><Header /><ActivitySpace addAct={addActivity} />
-        <div>{list.map((theActivity, index) => {
-            return (<Activity activity={theActivity} key={index} />);
+        <div className="space">{list.map((theActivity, index) => {
+            return (<Activity activity={theActivity} key={index} token={index} delete={deleteActivity} />);
         })}</div>
     </div>;
 }

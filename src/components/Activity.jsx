@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 import ReplayIcon from '@material-ui/icons/Replay';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 function Activity(props) {
 
@@ -47,11 +48,15 @@ function Activity(props) {
         changeHour(0);
     }
 
+    function trash() {
+        props.delete(props.token);
+    }
+
     return (<div className="activity-block">
         <h2>{props.activity} Time: {hours <= 9 ? 0 : null}{hours}:{minutes <= 9 ? 0 : null}{minutes}:{seconds <= 9 ? 0 : null}{seconds}</h2>
-        <button onClick={toggleTime}><PlayArrowIcon /></button>
-        <button onClick={toggleTime}><PauseIcon /></button>
+        <button onClick={toggleTime}>{!running ? <PlayArrowIcon /> : <PauseIcon />}</button>
         <button onClick={reset}><ReplayIcon /></button>
+        <button onClick={trash}><DeleteIcon /></button>
     </div>);
 }
 

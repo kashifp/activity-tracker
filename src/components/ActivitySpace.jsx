@@ -7,7 +7,7 @@ function ActivitySpace(props) {
 
     const [act, changeAct] = useState("");
 
-    // Updates the value of "act", (the activity to be added)
+    // Updates the value of "act", (with the activity to be added)
     function updateField(event) {
         const val = event.target.value;
         changeAct(val);
