@@ -1,5 +1,7 @@
 # activity-tracker
 
+https://kashifp.github.io/activity-tracker/
+
 Originally I had the thought to track the amount of time I sit every day. Later it struck me that it would be better to make an application with a widened
 utility to use for my other tasks. I had recently learned hooks in React.js, so I thought it would be beneficial to put my newfound skills to use and make
 this app a reality. Some coding later, and I came up with this.
